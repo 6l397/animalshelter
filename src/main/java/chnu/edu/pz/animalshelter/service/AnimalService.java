@@ -18,6 +18,9 @@ public class AnimalService {
     }
 
     public Animal createAnimal(Animal animal) {
+        if (animal.getId() != null && animalRepository.existsById(animal.getId())) {
+            return null;
+        }
         return animalRepository.save(animal);
     }
 
